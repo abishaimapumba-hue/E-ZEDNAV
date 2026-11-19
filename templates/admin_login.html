@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin sign in | E-ZEDNAV</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      .admin-login { width: min(440px, calc(100% - 32px)); margin: 10vh auto; padding: 28px; border: 1px solid #e2e9f0; border-radius: 14px; background: #fff; box-shadow: 0 8px 24px rgba(19, 39, 66, .07); }
+      .admin-login h1 { margin-bottom: 8px; font-size: 1.6rem; }
+      .admin-login form { display: grid; gap: 14px; margin-top: 22px; }
+      .admin-login label { display: grid; gap: 6px; font-weight: 600; }
+      .admin-login input { min-height: 44px; padding: 8px 12px; border: 1px solid #d6dee7; border-radius: 7px; }
+      .admin-login .notice { margin-top: 14px; color: #9f2d25; }
+    </style>
+  </head>
+  <body>
+    <main class="admin-login">
+      <p class="eyebrow">E-ZEDNAV ADMIN</p>
+      <h1>Sign in to applications</h1>
+      <p>Only authorized staff should access applicant information.</p>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+          <p class="notice" role="alert">{{ message }}</p>
+        {% endfor %}
+      {% endwith %}
+      <form method="post" action="{{ url_for('admin_login_submit') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+        <label for="password">Admin password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required />
+        <button class="btn btn-primary" type="submit">Sign in</button>
+      </form>
+    </main>
+  </body>
+</html>

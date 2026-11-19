@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Applications | E-ZEDNAV Admin</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      .admin-page { padding: 42px 0 70px; }
+      .admin-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+      .admin-heading h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+      .admin-application { margin-bottom: 18px; padding: 22px; border: 1px solid #e2e9f0; border-radius: 12px; background: #fff; box-shadow: 0 3px 12px rgba(19,39,66,.04); }
+      .admin-application h2 { margin-bottom: 12px; font-size: 1.2rem; }
+      .admin-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 18px; margin-bottom: 16px; }
+      .admin-details p { overflow-wrap: anywhere; }
+      .admin-update { display: grid; gap: 12px; }
+      .admin-update label { display: grid; gap: 6px; font-weight: 600; }
+      .admin-update select, .admin-update textarea { width: 100%; padding: 10px; border: 1px solid #d6dee7; border-radius: 7px; background: #fff; }
+      .admin-update textarea { min-height: 90px; }
+      .admin-flash { margin-bottom: 16px; color: #167348; font-weight: 600; }
+      .admin-flash.error { color: #9f2d25; }
+      .admin-empty { padding: 28px; border: 1px solid #e2e9f0; border-radius: 12px; background: #fff; }
+      @media (max-width: 620px) { .admin-details { grid-template-columns: 1fr; } .admin-heading { align-items: flex-start; flex-direction: column; } }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="/" class="brand"><span class="brand-mark">E</span>E-ZEDNAV</a>
+        <form method="post" action="{{ url_for('admin_logout') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+          <button class="btn btn-secondary" type="submit">Sign out</button>
+        </form>
+      </div>
+    </header>
+    <main class="admin-page">
+      <div class="container">
+        <header class="admin-heading">
+          <div>
+            <p class="eyebrow">APPLICATION REVIEW</p>
+            <h1>School applications</h1>
+          </div>
+          <p>{{ applications|length }} application{% if applications|length != 1 %}s{% endif %}</p>
+        </header>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% for category, message in messages %}
+            <p class="admin-flash {{ category }}" role="status">{{ message }}</p>
+          {% endfor %}
+        {% endwith %}
+        {% if applications %}
+          {% for application in applications %}
+            <article class="admin-application">
+              <h2>{{ application["student_name"] }} — {{ application["school_name"] }}</h2>
+              <div class="admin-details">
+                <p><strong>Reference:</strong> {{ application["reference"] }}</p>
+                <p><strong>Status:</strong> {{ application["status"] }}</p>
+                {% if application["acceptance_letter_sent_at"] %}
+                  <p><strong>Acceptance letter:</strong> Emailed {{ application["acceptance_letter_sent_at"] }}</p>
+                {% elif application["status"] == "Approved" %}
+                  <p><strong>Acceptance letter:</strong> Not emailed yet</p>
+                {% endif %}
+                <p><strong>Parent/guardian:</strong> {{ application["guardian_name"] }}</p>
+                <p><strong>Phone:</strong> {{ application["phone"] }}</p>
+                <p><strong>Email:</strong> {{ application["email"] }}</p>
+                <p><strong>Submitted:</strong> {{ application["submitted_at"] }}</p>
+                <p><strong>Notes:</strong> {{ application["notes"] or "None provided" }}</p>
+                <p><strong>Result:</strong> <a href="{{ url_for('application_document', reference=application['reference']) }}">{{ application["document_name"] }}</a></p>
+              </div>
+              <form class="admin-update" method="post" action="{{ url_for('update_application', reference=application['reference']) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+                <label>
+                  Application status
+                  <select name="status">
+                    {% for status in statuses %}
+                      <option value="{{ status }}" {% if status == application["status"] %}selected{% endif %}>{{ status }}</option>
+                    {% endfor %}
+                  </select>
+                </label>
+                <label>
+                  Feedback for the applicant
+                  <textarea name="feedback" maxlength="2000" placeholder="Write an update the applicant can view using their reference and email">{{ application["feedback"] }}</textarea>
+                </label>
+                <button class="btn btn-primary" type="submit">Save feedback</button>
+              </form>
+            </article>
+          {% endfor %}
+        {% else %}
+          <p class="admin-empty">No applications have been submitted yet.</p>
+        {% endif %}
+      </div>
+    </main>
+  </body>
+</html>

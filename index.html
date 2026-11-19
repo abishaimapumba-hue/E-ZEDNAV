@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="E-ZEDNAV helps families and students search for schools across Zambia by province, district, and town." />
+    <title>E-ZEDNAV | Zambia School Directory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="E-ZEDNAV home page">
+          <span class="brand-mark">E</span>
+          E-ZEDNAV
+        </a>
+
+          <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html" class="active">Home</a>
+          <a href="schools.html">Schools</a>
+          <a href="map.html">Map</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
+        </nav>
+
+        <a href="map.html" class="btn btn-primary nav-cta">Explore map</a>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <article class="hero-copy">
+            <p class="eyebrow">ZAMBIA SCHOOL DIRECTORY</p>
+            <h1>FIND THE RIGHT SCHOOL IN THE RIGHT PLACE.</h1>
+            <p class="lead">
+              E-ZEDNAV connects families, students, and educators with schools across Zambia through a clear directory, province selection, and useful local information about boarding and day school options in every region.
+            </p>
+
+            <form class="search-panel" id="homeSearchForm">
+              <label>
+                <span>Search school or area</span>
+                <input id="homeSearchInput" type="text" placeholder="Search by school, town, or province" />
+              </label>
+              <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+
+            <div class="quick-links">
+              <a href="schools.html?province=Lusaka">Lusaka</a>
+              <a href="schools.html?province=Copperbelt">Copperbelt</a>
+              <a href="schools.html?province=Southern">Southern</a>
+              <a href="schools.html?province=Eastern">Eastern</a>
+            </div>
+          </article>
+
+          <aside class="hero-card">
+            <header class="card-top">
+              <span>POPULAR REGION</span>
+              <span class="status">Live</span>
+            </header>
+            <div class="province-list" aria-label="Popular provinces">
+              <a href="schools.html?province=Central" class="province-link"><span>01</span>Central<strong>View schools</strong></a>
+              <a href="schools.html?province=Copperbelt" class="province-link"><span>02</span>Copperbelt<strong>View schools</strong></a>
+              <a href="schools.html?province=Eastern" class="province-link"><span>03</span>Eastern<strong>View schools</strong></a>
+              <a href="schools.html?province=Luapula" class="province-link"><span>04</span>Luapula<strong>View schools</strong></a>
+              <a href="schools.html?province=Lusaka" class="province-link"><span>05</span>Lusaka<strong>View schools</strong></a>
+              <a href="schools.html?province=Muchinga" class="province-link"><span>06</span>Muchinga<strong>View schools</strong></a>
+              <a href="schools.html?province=North-Western" class="province-link"><span>07</span>North-Western<strong>View schools</strong></a>
+              <a href="schools.html?province=Northern" class="province-link"><span>08</span>Northern<strong>View schools</strong></a>
+              <a href="schools.html?province=Southern" class="province-link"><span>09</span>Southern<strong>View schools</strong></a>
+              <a href="schools.html?province=Western" class="province-link"><span>10</span>Western<strong>View schools</strong></a>
+            </div>
+            <div class="hero-metrics">
+              <div>
+                <strong>10</strong>
+                <span>Provinces</span>
+              </div>
+              <div>
+                <strong>150+</strong>
+                <span>Schools listed</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="stats-bar">
+        <div class="container stats-grid">
+          <div>
+            <strong>10</strong>
+            <span>Provinces covered</span>
+          </div>
+          <div>
+            <strong>35+</strong>
+            <span>Districts mapped</span>
+          </div>
+          <div>
+            <strong>24/7</strong>
+            <span>School discovery</span>
+          </div>
+          <div>
+            <strong>100%</strong>
+            <span>Local focus</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section coverage-section">
+        <div class="container">
+          <header class="section-heading">
+            <p class="eyebrow">OUR COVERAGE</p>
+            <h2>Explore schools by province and area.</h2>
+          </header>
+
+          <div class="cards province-grid">
+            <a href="schools.html?province=Central" class="province-card">
+              <span>01</span>
+              <h3>Central</h3>
+              <p>Schools serving agricultural and growing urban communities in central Zambia.</p>
+            </a>
+            <a href="schools.html?province=Copperbelt" class="province-card">
+              <span>02</span>
+              <h3>Copperbelt</h3>
+              <p>Mining towns and leading education hubs across the region.</p>
+            </a>
+            <a href="schools.html?province=Eastern" class="province-card">
+              <span>03</span>
+              <h3>Eastern</h3>
+              <p>Community and secondary schools serving the eastern corridor.</p>
+            </a>
+            <a href="schools.html?province=Luapula" class="province-card">
+              <span>04</span>
+              <h3>Luapula</h3>
+              <p>Schools across lakeside communities and emerging service towns.</p>
+            </a>
+            <a href="schools.html?province=Lusaka" class="province-card">
+              <span>05</span>
+              <h3>Lusaka</h3>
+              <p>Urban schools, private academies, and community institutions.</p>
+            </a>
+            <a href="schools.html?province=Muchinga" class="province-card">
+              <span>06</span>
+              <h3>Muchinga</h3>
+              <p>Schools serving rural districts and developing regional centres.</p>
+            </a>
+            <a href="schools.html?province=North-Western" class="province-card">
+              <span>07</span>
+              <h3>North-Western</h3>
+              <p>Education options across remote and growing areas in the northwest.</p>
+            </a>
+            <a href="schools.html?province=Northern" class="province-card">
+              <span>08</span>
+              <h3>Northern</h3>
+              <p>Academic institutions in key northern growth centers.</p>
+            </a>
+            <a href="schools.html?province=Southern" class="province-card">
+              <span>09</span>
+              <h3>Southern</h3>
+              <p>Schools serving growing towns and rural communities.</p>
+            </a>
+            <a href="schools.html?province=Western" class="province-card">
+              <span>10</span>
+              <h3>Western</h3>
+              <p>Schools connected to regional learning and local services.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <header class="section-heading">
+            <p class="eyebrow">WHY EDU NAV</p>
+            <h2>Simple, clear school discovery for families and students.</h2>
+          </header>
+
+          <div class="cards services-grid">
+            <article class="card">
+              <span class="icon" aria-hidden="true">📍</span>
+              <h3>LOCATION-BASED SEARCH</h3>
+              <p>Browse schools by province, district, and town to find the options closest to you.</p>
+            </article>
+            <article class="card">
+              <span class="icon" aria-hidden="true">🏫</span>
+              <h3>School overview</h3>
+              <p>See school type, admission information, services, and contact details in one place.</p>
+            </article>
+            <article class="card">
+              <span class="icon" aria-hidden="true">🗺️</span>
+              <h3>Interactive map</h3>
+              <p>Move from Zambia to province to district to town and then to school results.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section">
+        <div class="container contact-wrap">
+          <header class="contact-copy">
+            <p class="eyebrow">READY TO START</p>
+            <h2>Need help finding a school for your family?</h2>
+            <p>Use the directory or the map to explore schools across Zambia and make a better-informed choice.</p>
+          </header>
+
+          <div class="quick-action-box">
+            <a href="map.html" class="btn btn-primary">Open the map</a>
+            <a href="schools.html" class="btn btn-secondary">Browse schools</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <div>
+          <a href="index.html" class="brand footer-brand">
+            <span class="brand-mark">E</span>
+            E-ZEDNAV
+          </a>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer links">
+          <a href="schools.html">Schools</a>
+          <a href="map.html">Map</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
+        </nav>
+
+        <p>© <span id="year"></span> E-ZEDNAV. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
